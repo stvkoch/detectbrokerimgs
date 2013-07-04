@@ -1,4 +1,4 @@
 detect_broker_imgs
 ==================
 
-Detecting broken images
+Extract http://stereochro.me/ideas/detecting-broken-images-js
