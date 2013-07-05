@@ -3,6 +3,8 @@
     @usage
         $(function(){
             var brokimgs = new Brokimgs($('img'), 'http://source.alert_broker_img.com/img_404.png');
+            or
+            var brokimgs = new Brokimgs($('img.thumbs'), 'http://source.alert_broker_img.com/img_404.png');
         });
 */
 var Brokimgs = function(imgsElms, img_404) {
