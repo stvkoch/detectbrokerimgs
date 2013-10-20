@@ -2,12 +2,15 @@
     Brokimgs
     @usage
         $(function(){
-            var brokimgs = new Brokimgs($('img'), 'http://source.alert_broker_img.com/img_404.png');
-            or
-            var brokimgs = new Brokimgs($('img.thumbs'), 'http://source.alert_broker_img.com/img_404.png');
+            var brokimgs = new Brokimgs($('img'), function(elm){ 
+                $(elm).style.visibility = 'hidden';
+            });
+            var brokimgs = new Brokimgs($('img'), function(elm){ 
+                $(elm).src='http://source.alert_broker_img.com/img_404.png'; 
+            });
         });
 */
-var Brokimgs = function(imgsElms, img_404) {
+var Brokimgs = function(imgsElms, callback) {
     var isImageOk = function(img) {
         // During the onload event, IE correctly identifies any images that
         // weren't downloaded as not complete. Others should too. Gecko-based
@@ -27,10 +30,7 @@ var Brokimgs = function(imgsElms, img_404) {
     var i = imgsElms.length;
     while(i--) {
         if(!isImageOk(imgsElms[i])) {
-            if(typeof img_404 != 'undefine')
-                imgsElms[i].src = img_404;
-            else
-                imgsElms[i].style.visibility = 'hidden';
+            callback(imgsElms[i]);
         }
     }
 }
